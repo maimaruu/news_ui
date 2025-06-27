@@ -1,0 +1,388 @@
+/* 全体のレイアウト調整 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+/* 検索コンテナのスタイル */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+#search-keyword {
+    width: 60%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#search-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* プログレスバーのスタイル */
+.progress-bar-container {
+    width: 60%;
+    max-width: 480px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 10px auto 0;
+    overflow: hidden;
+}
+
+.progress-bar-value {
+    width: 100%;
+    height: 100%;
+    background-color: #007bff;
+    animation: indeterminate-progress 1.5s infinite;
+}
+
+@keyframes indeterminate-progress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ジャンル選択タブのスタイル */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+}
+
+.category-tab {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #555;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.category-tab:hover {
+    background-color: #e0e0e0;
+}
+
+.category-tab.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.category-tab.disabled {
+    background-color: #f0f0f0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* スライダーグループ全体のコンテナ */
+.sliders-group-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+
+.slider-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.slider-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+    cursor: grab;
+}
+.slider:hover {
+    opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 5px;
+}
+.slider:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 現在のスコア表示エリア */
+.current-scores {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+    font-size: 0.9em;
+    color: #777;
+}
+.current-scores span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* マッピング表示ボタンのスタイル */
+.action-button {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.action-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.content-display-area {
+    width: 100%;
+}
+
+.news-container {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* ★★★ この部分が今回の最も重要な修正点です ★★★ */
+.news-article {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    padding: 30px;
+    line-height: 1.7;
+    overflow-y: auto;
+    margin: 0 auto 40px auto; /* 上0, 左右auto, 下40pxの余白を設定 */
+}
+
+#article-title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #004080;
+    line-height: 1.4;
+}
+
+.article-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#article-body, #graph-article-body {
+    margin-top: 20px;
+    font-size: 1.0em;
+    color: #333;
+}
+
+#article-body p, #graph-article-body p {
+    margin-bottom: 1em;
+}
+
+#article-url, #graph-article-url {
+    display: block;
+    margin-top: 25px;
+    color: #1a0dab;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#article-url:hover, #graph-article-url:hover {
+    text-decoration: underline;
+}
+
+/* --- モーダルウィンドウのスタイル --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 95%;
+    max-width: 1400px;
+    border-radius: 10px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#graph-and-article-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 85vh; /* ビューポートの高さの85% */
+}
+
+.graph-area {
+    flex: 2; /* グラフエリアを広めに (66%) */
+    min-width: 0;
+}
+
+.graph-selected-article {
+    flex: 1; /* 記事詳細エリア (33%) */
+    min-width: 0;
+    overflow-y: auto; /* コンテンツが多い場合にスクロール */
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+.graph-selected-article h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: #004080;
+}
+
+/* ===== スライダーが無効な場合のスタイル（ここから追記） ===== */
+.slider:disabled {
+    background: #e9ecef; /* トラック（溝）を明るい灰色に */
+    cursor: not-allowed; /* カーソルを「禁止」マークに */
+}
+
+/* Chrome, Safari, Edgeなど */
+.slider:disabled::-webkit-slider-thumb {
+    background: #adb5bd; /* つまみを少し濃い灰色に */
+}
+
+/* Firefox */
+.slider:disabled::-moz-range-thumb {
+    background: #adb5bd; /* つまみを少し濃い灰色に */
+}
+
+/* キーワードハイライトのスタイル */
+.highlight {
+    background-color: #fffd8b; /* 黄色の背景 */
+    font-weight: bold;      /* 太字 */
+}
+
+/* ハイライト切り替えチェックボックスのスタイル */
+.highlight-toggle-container {
+    text-align: center;
+    margin: 15px 0 5px 0; /* ←★上下の余白を調整 */
+    font-size: 0.9em;
+}
+.header p {
+    margin-top: 5px; /* ←★上の要素との余白を詰める */
+    margin-bottom: 0;
+}
+
+/* キーワードハイライトのスタイル */
+.highlight {
+    background-color: #fffd8b; /* 黄色の背景 */
+    font-weight: bold;
+}
+

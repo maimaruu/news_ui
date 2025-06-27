@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース可視化ツール</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="search-container">
+            <input type="text" id="search-keyword" placeholder="記事を検索するキーワードを入力 (例: 自転車, 経済)">
+            <button id="search-button">検索</button>
+        </div>
+        
+        <div class="highlight-toggle-container">
+            <input type="checkbox" id="highlight-toggle" checked>
+            <label for="highlight-toggle">検索キーワードをハイライト表示</label>
+        </div>
+        <div class="progress-bar-container" id="progress-bar" style="display: none;">
+            <div class="progress-bar-value"></div>
+        </div>
+        <p>バーを動かしてニュースの「硬さ」を調節する</p>
+    </div>
+
+    <nav class="category-tabs">
+        <button class="category-tab active" data-category="すべて">すべて</button>
+        <button class="category-tab" data-category="エンタメ">エンタメ</button>
+        <button class="category-tab" data-category="ライフ">ライフ</button>
+        <button class="category-tab" data-category="地域">地域</button>
+        <button class="category-tab" data-category="スポーツ">スポーツ</button>
+        <button class="category-tab" data-category="国内">国内</button>
+        <button class="category-tab" data-category="国際">国際</button>
+        <button class="category-tab" data-category="経済">経済</button>
+        <button class="category-tab" data-category="IT">IT</button>
+        <button class="category-tab" data-category="科学">科学</button>
+    </nav>
+
+    <div class="sliders-group-container" style="display: none;">
+        <div class="slider-container">
+            <label for="topic-slider">トピック（政治的関連性）:</label>
+            <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="topic-slider">
+            <div class="slider-labels">
+                <span>低い</span>
+                <span>高い</span>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <label for="focus-slider">フォーカス（対象と範囲）:</label>
+            <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="focus-slider">
+            <div class="slider-labels">
+                <span>個別事例型</span>
+                <span>構造分析型</span>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <label for="style-slider">スタイル（伝え方）:</label>
+            <input type="range" min="0" max="2" value="1" step="0.1" class="slider" id="style-slider">
+            <div class="slider-labels">
+                <span>主観的</span>
+                <span>客観的</span>
+            </div>
+        </div>
+        <div class="current-scores" id="current-scores-display"></div>
+    </div>
+
+    <button id="show-mapping-button" class="action-button" style="display: none;">記事全体をマッピング表示</button>
+
+    <div class="content-display-area">
+        <div class="news-container" id="news-article-display-container">
+            <div class="news-article" id="news-article-display">
+                <h2 id="article-title">ニュース記事タイトル</h2>
+                <div class="article-meta">
+                    <span id="article-source"></span> | <span id="article-published-at"></span> | <span id="article-category"></span>
+                </div>
+                <div id="article-body">
+                    <p>キーワードを入力してニュースを検索してください。</p>
+                </div>
+                <a id="article-url" href="#" target="_blank">元の記事を読む</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="graph-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>記事の3Dマッピング</h2>
+            <div id="graph-and-article-container">
+                <div id="plotly-graph" class="graph-area"></div>
+                <div class="news-article graph-selected-article" id="graph-selected-article-display">
+                    <h3 id="graph-article-title">グラフ上の点を選択してください</h3>
+                    <div class="article-meta">
+                        <span id="graph-article-source"></span> | <span id="graph-article-published-at"></span> | <span id="graph-article-category"></span>
+                    </div>
+                    <div id="graph-article-body">
+                        <p>グラフ上の点をクリックすると、記事の詳細がここに表示されます。</p>
+                    </div>
+                    <a id="graph-article-url" href="#" target="_blank" style="display: none;">元の記事を読む</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
