@@ -386,3 +386,5 @@ body {
     font-weight: bold;
 }
 
+/* style.css の一番下に追加 */
+#current-scores-display { display: none; }
