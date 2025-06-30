@@ -388,3 +388,115 @@ body {
 
 /* style.css の一番下に追加 */
 #current-scores-display { display: none; }
+/* ===== ここから追記 ===== */
+
+/* 無効化されたカテゴリタブのスタイル */
+.category-tab:disabled {
+    background-color: #f8f9fa;
+    color: #ced4da;
+    border-color: #dee2e6;
+    cursor: not-allowed; /* カーソルを「禁止」マークに */
+}
+
+/* 無効化されたスライダーのスタイル */
+.slider:disabled {
+    background: #e9ecef; /* トラック（溝）を明るい灰色に */
+    cursor: not-allowed; /* カーソルを「禁止」マークに */
+}
+
+/* スライダーのつまみのスタイル（ブラウザごとに設定） */
+.slider:disabled::-webkit-slider-thumb {
+    background: #adb5bd; /* Chrome, Safari, Edgeなど */
+}
+
+.slider:disabled::-moz-range-thumb {
+    background: #adb5bd; /* Firefox */
+}
+
+/* ===== ここからstyle.cssに追記してください ===== */
+
+/* 無効化されたカテゴリタブのスタイル */
+.category-tab:disabled {
+    background-color: #f8f9fa;
+    color: #ced4da;
+    border-color: #dee2e6;
+    cursor: not-allowed; /* カーソルを「禁止」マークに */
+}
+
+/* スライダー全体を無効化する場合のスタイル */
+.slider:disabled {
+    cursor: not-allowed;
+}
+
+/* スライダーのつまみを無効化された見た目に */
+.slider:disabled::-webkit-slider-thumb {
+    background: #adb5bd;
+}
+.slider:disabled::-moz-range-thumb {
+    background: #adb5bd;
+}
+
+/* スライダーのトラック（溝）の背景を動的に変更するための準備 */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e9ecef; /* デフォルトの背景 */
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+
+/* ===== ここまで追記 ===== */
+
+/* ===== ここからstyle.cssに追記してください ===== */
+
+/* 無効化されたカテゴリタブのスタイル */
+.category-tab:disabled {
+    background-color: #f8f9fa;
+    color: #ced4da;
+    border-color: #dee2e6;
+    cursor: not-allowed; /* カーソルを「禁止」マークに */
+}
+
+/* ★★★【修正】★★★ スライダーが無効化された時のスタイル */
+.slider:disabled {
+    background: #e9ecef; /* トラック（溝）を明るい灰色に */
+    cursor: not-allowed;
+}
+
+.slider:disabled::-webkit-slider-thumb {
+    background: #adb5bd; /* つまみを灰色に (Chrome, Safari) */
+}
+
+.slider:disabled::-moz-range-thumb {
+    background: #adb5bd; /* つまみを灰色に (Firefox) */
+}
+
+/* ★★★【削除】★★★ 以前の複雑な背景グラデーションは不要なので、
+もし .slider { background: linear-gradient(...); } のような記述があれば削除してください。*/
+
+/* ===== ここまで追記 ===== */
